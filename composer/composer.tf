@@ -1,3 +1,6 @@
+locals{
+  dags_bucket = "northamerica-northeast1-com-19fd123f-bucket"
+}
 resource "google_project_service" "composer_api" {
   provider = google-beta
   project = var.projectID
@@ -24,3 +27,4 @@ resource "google_composer_environment" "composer_env" {
     }
   }
 }
+

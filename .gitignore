@@ -2,3 +2,4 @@ bell*.json
 .terraform.lock.hcl
 terraform.tfstate*
 .terraform
+terraform_imp
