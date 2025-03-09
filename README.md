@@ -1,38 +1,38 @@
-Generation and Loading of Data
-mysql setup
-https://console.aiven.io/account/a51bc14c2e00/project/bellassignment55-04a3/services
+# **Project Name**
 
-Go to mysqldb folder
-Run `python generate_data.py`
-Run `python load_data.py`
+A short description of your project.
 
-Cloud run job Image Setup
-Install Docker Desktop
-cp -r ../artifact_registry/\* .
-cp ../terraform_config/terraform.tf .
-gcloud auth configure-docker northamerica-northeast1-docker.pkg.dev
-docker build -t "odbc" --no-cache .
-docker tag odbc:latest northamerica-northeast1-docker.pkg.dev/bellassignment-453021/docker-repo/odbc:latest
-docker push northamerica-northeast1-docker.pkg.dev/bellassignment-453021/docker-repo/odbc:latest
+---
 
-Create Infrastructure
+## **Table of Contents**
 
-cp -r ../bucket/_ .
-cp -r ../composer/_ .
-cp -r ../iam/\* .
-cp -r ../dags/_ .
-cp -r ../cloudrunjob/_ .
+1. [Setup](#setup) <!-- Link to setup.md -->
+2. [High-Level Architecture](#high-level-architecture) <!-- Link to high-level-architecture.md -->
+3. [Data Modeling](#data-modeling) <!-- Link to datamodeling.md -->
+4. [Technical Design](#technical-design) <!-- Link to designexplainations.md -->
 
-terraform init
-terraform fmt
-terraform plan
-terraform apply
-terraform destroy
+---
 
-cp -r ../bucket/_ .
-cp -r ../composer/_ .
+## **Setup**
 
-cp -r ../iam/\* .
+For detailed setup instructions, see the [Setup Guide](setup.md).
 
-cp -r ../dags/_ .
-cp -r ../cloudrunjob/_ .
+---
+
+## **High-Level Architecture**
+
+For an overview of the project's architecture, check out the [High-Level Architecture Document](high-level-architecture.md).
+
+---
+
+## **Data Modeling**
+
+To learn about the data models used in this project, refer to the [Data Modeling Document](datamodeling.md).
+
+---
+
+## **Technical Design**
+
+To learn about the techinical design used in this project, refer to the [Technical Design Document](technicaldesign.md).
+
+---
