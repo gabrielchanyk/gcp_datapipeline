@@ -1,20 +1,17 @@
 [
   {
-    "name": "city",
+    "name": "province",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "City of the customer's address."
+    "mode": "NULLABLE"
   },
   {
     "name": "customer_count",
     "type": "INTEGER",
-    "mode": "NULLABLE",
-    "description": "Count of unique customers with Cellular service usage in the city."
+    "mode": "NULLABLE"
   },
   {
     "name": "average_bill_amount",
     "type": "FLOAT",
-    "mode": "NULLABLE",
-    "description": "Average billing amount for customers in the city."
+    "mode": "NULLABLE"
   }
 ]

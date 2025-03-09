@@ -16,6 +16,7 @@
 ### Cloud Run Job Image Setup
 
 1. Install Docker Desktop.
+   https://app.docker.com/open-desktop?url=docker-desktop://dashboard/open
 2. Copy files:
    ```sh
    mkdir terraform_imp
@@ -70,3 +71,11 @@
    ```sh
    terraform destroy
    ```
+
+### Visualization with PowerBI
+
+1. Download Power BI:
+   Download Power BI https://www.microsoft.com/en-us/power-platform/products/power-bi/downloads
+
+2. Open Power BI file:
+   Open up file in visuals called "telecom_visuals"

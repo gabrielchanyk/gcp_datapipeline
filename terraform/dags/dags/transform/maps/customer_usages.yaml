@@ -6,15 +6,15 @@ jobs:
     query: >
       SELECT 
           c.customer_id,
-          c.city,
+          c.state_province AS province,
           CASE 
               WHEN csu.usage_id IS NOT NULL THEN 'Cellular'
               WHEN hiu.usage_id IS NOT NULL THEN 'Home Internet'
               ELSE 'No Usage'
-          END AS usage_type, -- Indicates Cellular or Home Internet
-          COALESCE(SUM(csu.usage_amount), SUM(hiu.data_usage_amount), 0) AS total_usage_amount, -- Sum usage amounts
-          b.plan_type, -- Plan type from Billing
-          b.billing_amount -- Billing amount
+          END AS usage_type,
+          COALESCE(SUM(csu.usage_amount), SUM(hiu.data_usage_amount), 0) AS total_usage_amount,
+          b.plan_type,
+          b.billing_amount
       FROM 
           `bellassignment-453021.expl.customers` c
       LEFT JOIN 
@@ -30,15 +30,16 @@ jobs:
       ON 
           c.customer_id = hiu.customer_id
       GROUP BY 
-          c.customer_id, c.city, usage_type, b.plan_type, b.billing_amount
+          c.customer_id, c.state_province, usage_type, b.plan_type, b.billing_amount
       ORDER BY 
           c.customer_id;
+
   - destination_dataset: curated
-    destination_table: internet_customer_city_count
+    destination_table: internet_customer_province_count
     write_disposition: WRITE_TRUNCATE
     query: >
       SELECT 
-          c.city,
+          c.state_province AS province,
           COUNT(DISTINCT c.customer_id) AS customer_count,
           AVG(b.billing_amount) AS average_bill_amount
       FROM 
@@ -52,15 +53,16 @@ jobs:
       ON 
           c.customer_id = b.customer_id
       GROUP BY 
-          c.city
+          c.state_province
       ORDER BY 
           customer_count DESC;
+
   - destination_dataset: curated
-    destination_table: cellular_customer_city_count
+    destination_table: cellular_customer_province_count
     write_disposition: WRITE_TRUNCATE
     query: >
       SELECT 
-          c.city,
+          c.state_province AS province,
           COUNT(DISTINCT c.customer_id) AS customer_count,
           AVG(b.billing_amount) AS average_bill_amount
       FROM 
@@ -74,6 +76,6 @@ jobs:
       ON 
           c.customer_id = b.customer_id
       GROUP BY 
-          c.city
+          c.state_province
       ORDER BY 
           customer_count DESC;

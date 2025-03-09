@@ -2,37 +2,31 @@
   {
     "name": "customer_id",
     "type": "INTEGER",
-    "mode": "REQUIRED",
-    "description": "Primary key, unique identifier for the customer."
+    "mode": "REQUIRED"
   },
   {
-    "name": "city",
+    "name": "province",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "City of the customer's address."
+    "mode": "NULLABLE"
   },
   {
     "name": "usage_type",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "Type of usage: Cellular, Home Internet, or No Usage."
+    "mode": "NULLABLE"
   },
   {
     "name": "total_usage_amount",
     "type": "FLOAT",
-    "mode": "NULLABLE",
-    "description": "Total usage amount for the customer, aggregated by usage type."
+    "mode": "NULLABLE"
   },
   {
     "name": "plan_type",
     "type": "STRING",
-    "mode": "NULLABLE",
-    "description": "Type of plan (e.g., Basic, Premium, Unlimited)."
+    "mode": "NULLABLE"
   },
   {
     "name": "billing_amount",
     "type": "FLOAT",
-    "mode": "NULLABLE",
-    "description": "Amount billed to the customer."
+    "mode": "NULLABLE"
   }
 ]
