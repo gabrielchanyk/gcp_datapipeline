@@ -3,5 +3,6 @@ steps:
     - customers.yaml
     - billing.yaml
     - home_internet_usage.yaml
+    - cellular_service.yaml
   step2:
-    - cellular_service_usage.yaml
+    - customer_usages.yaml

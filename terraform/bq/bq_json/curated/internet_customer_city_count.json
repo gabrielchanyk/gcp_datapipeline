@@ -1,0 +1,20 @@
+[
+  {
+    "name": "city",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "City of the customer's address."
+  },
+  {
+    "name": "customer_count",
+    "type": "INTEGER",
+    "mode": "NULLABLE",
+    "description": "Count of unique customers with Home Internet usage in the city."
+  },
+  {
+    "name": "average_bill_amount",
+    "type": "FLOAT",
+    "mode": "NULLABLE",
+    "description": "Average billing amount for customers in the city."
+  }
+]
