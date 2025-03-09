@@ -4,6 +4,6 @@ force_destroy = true
 owner = "gabriel"
 bucket = "northamerica-northeast1-com-19fd123f-bucket"
 bq_datasets = {
-  "lnd"  = ["customers"],
-#   "expl" = ["customers"]
+  "lnd"  = ["customers", "billing", "cellular_service_usage", "home_internet_usage"],
+  "expl" = ["customers", "billing", "cellular_service_usage", "home_internet_usage"],
 }

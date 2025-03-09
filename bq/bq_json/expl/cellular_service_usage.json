@@ -1,0 +1,38 @@
+[
+  {
+    "name": "usage_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "Primary key, auto-incremented."
+  },
+  {
+    "name": "customer_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "Foreign key, references Customers."
+  },
+  {
+    "name": "service_type",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Type of service (e.g., call, SMS, data)."
+  },
+  {
+    "name": "usage_amount",
+    "type": "NUMERIC",
+    "mode": "REQUIRED",
+    "description": "Amount of usage (e.g., minutes, messages, MBs)."
+  },
+  {
+    "name": "usage_date",
+    "type": "DATE",
+    "mode": "REQUIRED",
+    "description": "Date of usage."
+  },
+  {
+    "name": "usage_time",
+    "type": "TIME",
+    "mode": "REQUIRED",
+    "description": "Time of usage."
+  }
+]

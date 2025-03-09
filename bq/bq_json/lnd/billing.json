@@ -1,0 +1,50 @@
+[
+  {
+    "name": "billing_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "Primary key, auto-incremented."
+  },
+  {
+    "name": "customer_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "Foreign key, references Customers."
+  },
+  {
+    "name": "billing_amount",
+    "type": "NUMERIC",
+    "mode": "REQUIRED",
+    "description": "Amount billed to the customer."
+  },
+  {
+    "name": "billing_date",
+    "type": "DATE",
+    "mode": "REQUIRED",
+    "description": "Date when the bill was generated."
+  },
+  {
+    "name": "due_date",
+    "type": "DATE",
+    "mode": "REQUIRED",
+    "description": "Payment due date."
+  },
+  {
+    "name": "payment_status",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Status of the payment (e.g., paid, due)."
+  },
+  {
+    "name": "plan_type",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Type of plan (e.g., Basic, Premium, Unlimited)."
+  },
+  {
+    "name": "latest_billed_date",
+    "type": "DATE",
+    "mode": "REQUIRED",
+    "description": "Date of the most recent billing."
+  }
+]

@@ -1,22 +1,56 @@
 engine: "mysql"
 url: "mysql+mysqlconnector://avnadmin:<password>@mysql-191e4b62-bellassignment55-04a3.g.aivencloud.com:18533/defaultdb"
 dataset_id: "lnd"
-table:
-  name: "customers"
-  query: |
-    SELECT
-        customer_id,
-        first_name,
-        last_name,
-        date_of_birth,
-        email,
-        phone_number,
-        address_line1,
-        address_line2,
-        city,
-        state_province,
-        postal_code,
-        country,
-        activation_date
-    FROM
-        Customers
+tables:
+  - name: "customers"
+    query: |
+      SELECT
+          customer_id,
+          first_name,
+          last_name,
+          date_of_birth,
+          email,
+          phone_number,
+          address_line1,
+          address_line2,
+          city,
+          state_province,
+          postal_code,
+          country,
+          activation_date
+      FROM
+          Customers
+  - name: "billing"
+    query: |
+      SELECT
+          billing_id,
+          customer_id,
+          billing_amount,
+          billing_date,
+          due_date,
+          payment_status,
+          plan_type,
+          latest_billed_date
+      FROM
+          Billing
+  - name: "cellular_service_usage"
+    query: |
+      SELECT
+          usage_id,
+          customer_id,
+          service_type,
+          usage_amount,
+          usage_date,
+          usage_time
+      FROM
+          CellularUsage
+  - name: "home_internet_usage"
+    query: |
+      SELECT
+          usage_id,
+          customer_id,
+          data_usage_amount,
+          usage_date,
+          usage_time
+      FROM
+          InternetUsage
