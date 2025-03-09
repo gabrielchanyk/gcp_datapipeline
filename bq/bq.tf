@@ -14,7 +14,18 @@ resource "google_bigquery_dataset" "datasets" {
 
 # Create BigQuery tables
 resource "google_bigquery_table" "tables" {
-  for_each = { for dataset, tables in var.bq_datasets : "${dataset}_${tables}" => { dataset = dataset, table = tables } }
+  deletion_protection= !var.force_destroy
+  for_each = {
+    for pair in flatten([
+      for dataset, tables in var.bq_datasets : [
+        for table in tables : {
+          dataset = dataset
+          table   = table
+        }
+      ]
+    ]) : "${pair.dataset}_${pair.table}" => pair
+  }
+
   dataset_id = google_bigquery_dataset.datasets[each.value.dataset].dataset_id
   table_id   = each.value.table
 
