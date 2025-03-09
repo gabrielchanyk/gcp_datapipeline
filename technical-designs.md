@@ -24,6 +24,8 @@ The Cloud Run job is designed to use a YAML file configuration. Currently, for t
 - **Configurable**: YAML files allow for easy configuration without modifying the core code.
 - **Scalable**: Can handle varying workloads efficiently.
 
+[Terraform Cloud Run Job](terraform/cloudrunjob): This folder contains the Terraform configurations for managing Cloud Run jobs.
+
 ---
 
 ## **Composer DAG Design**
@@ -35,6 +37,8 @@ The Composer DAG follows a similar design, using YAML file configuration. This i
 - **Flexible**: YAML files enable easy customization of workflows.
 - **Dependency Management**: YAML files define dependencies, making it easier to manage complex workflows.
 - **User-Friendly**: Non-technical users can configure workflows with minimal assistance.
+
+[Terraform DAGs](terraform/dags): This folder contains the Terraform configurations for managing DAGs.
 
 ---
 
