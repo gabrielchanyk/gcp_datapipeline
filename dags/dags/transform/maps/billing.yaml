@@ -1,0 +1,16 @@
+name: billing
+jobs:
+  - destination_dataset: expl
+    destination_table: billing
+    write_disposition: WRITE_TRUNCATE
+    query: >
+      SELECT 
+        billing_id, 
+        customer_id, 
+        billing_amount, 
+        billing_date, 
+        due_date, 
+        TRIM(payment_status) AS payment_status, 
+        TRIM(plan_type) AS plan_type, 
+        latest_billed_date
+      FROM `bellassignment-453021.lnd.billing`

@@ -1,0 +1,21 @@
+name: customers
+jobs:
+  - destination_dataset: expl
+    destination_table: customers
+    write_disposition: WRITE_TRUNCATE
+    query: >
+      SELECT 
+        customer_id, 
+        TRIM(first_name) AS first_name, 
+        TRIM(last_name) AS last_name, 
+        date_of_birth, 
+        TRIM(email) AS email, 
+        TRIM(phone_number) AS phone_number, 
+        TRIM(address_line1) AS address_line1, 
+        TRIM(address_line2) AS address_line2, 
+        TRIM(city) AS city, 
+        TRIM(state_province) AS state_province, 
+        TRIM(postal_code) AS postal_code, 
+        TRIM(country) AS country, 
+        activation_date
+      FROM `bellassignment-453021.lnd.customers`

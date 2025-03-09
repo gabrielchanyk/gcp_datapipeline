@@ -1,0 +1,13 @@
+name: home_internet_usage
+jobs:
+  - destination_dataset: expl
+    destination_table: home_internet_usage
+    write_disposition: WRITE_TRUNCATE
+    query: >
+      SELECT 
+        usage_id, 
+        customer_id, 
+        data_usage_amount, 
+        usage_date, 
+        usage_time
+      FROM `bellassignment-453021.lnd.home_internet_usage`

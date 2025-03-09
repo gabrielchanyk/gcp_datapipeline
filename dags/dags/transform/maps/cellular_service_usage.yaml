@@ -1,0 +1,14 @@
+name: cellular_service_usage
+jobs:
+  - destination_dataset: expl
+    destination_table: cellular_service_usage
+    write_disposition: WRITE_TRUNCATE
+    query: >
+      SELECT 
+        usage_id, 
+        customer_id, 
+        TRIM(service_type) AS service_type, 
+        usage_amount, 
+        usage_date, 
+        usage_time
+      FROM `bellassignment-453021.lnd.cellular_service_usage`
