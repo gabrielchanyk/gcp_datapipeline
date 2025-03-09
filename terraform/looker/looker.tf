@@ -1,12 +1,17 @@
-resource "google_looker_instance" "looker_instance" {
-  name         = "looker-instance"
-  region       = "us-central1"
-  public_ip_enabled = true
-  admin_settings {
-    allowed_email_domains = ["example.com"]
-  }
-  oauth_config {
-    client_id     = "<YOUR_CLIENT_ID>"
-    client_secret = "<YOUR_CLIENT_SECRET>"
-  }
-}
+# looker not working for free version
+# resource "google_project_service" "looker_api" {
+#   provider = google-beta
+#   project = var.projectID
+#   service = "looker.googleapis.com"
+# }
+
+# resource "google_looker_instance" "looker-instance" {
+#   name              = "my-instance"
+#   platform_edition  = "LOOKER_CORE_STANDARD_ANNUAL"
+#   region            = var.region
+#   oauth_config {
+#     client_id = "my-client-id"
+#     client_secret = "my-client-secret"
+#   }
+#   depends_on = [ google_project_service.looker_api ]
+# }

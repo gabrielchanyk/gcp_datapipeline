@@ -47,7 +47,6 @@
    cp ../terraform/cloudrunjob/*.tf .
    cp ../terraform/composer/* .
    cp -r ../terraform/dags/* .
-   cp ../terraform/looker/* .
    cp ../terraform/terraform_config/* .
    ```
 2. Initialize Terraform:
@@ -70,13 +69,4 @@
 
    ```sh
    terraform destroy
-   ```
-
-7. Copy additional files as needed:
-   ```sh
-   cp -r ../bucket/_ .
-   cp -r ../composer/_ .
-   cp -r ../iam/* .
-   cp -r ../dags/_ .
-   cp -r ../cloudrunjob/_ .
    ```
