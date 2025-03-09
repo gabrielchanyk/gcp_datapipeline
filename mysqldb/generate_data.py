@@ -72,7 +72,7 @@ def generate_customer(customer_id):
         'city': fake.city(),
         'state_province': fake.province(),
         'postal_code': fake.postcode(),
-        'country': fake.country(),
+        'country': 'CA',
         'activation_date': fake.date_between_dates(date_start=datetime(2020, 1, 1), date_end=datetime(2023, 12, 31))
     }
 
