@@ -40,7 +40,7 @@ The Composer DAG follows a similar design, using YAML file configuration. This i
 
 ## **Terraform**
 
-The entire end-to-end data ingestion pipeline is built with Terraform, with the exception of the visualization layer (due to Looker being blocked on the free tier). This makes the pipeline easily maintainable and reproducible on demand.
+The entire end-to-end data ingestion pipeline is built with Terraform, with the exception of the visualization layer (due to Looker being blocked on the free tier). This makes the pipeline easily maintainable and reproducible on demand. There is also the component of controlling access with this and also for each component to have its own custom iam service account creation and permissions.
 
 ### **Key Features**
 
