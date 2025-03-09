@@ -1,9 +1,11 @@
 from airflow import DAG
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
+from airflow.providers.google.cloud.operators.cloud_run import CloudRunExecuteJobOperator
 from airflow.utils.dates import days_ago
 import yaml
 from datetime import timedelta
 import os
+from airflow.utils.log.logging_mixin import LoggingMixin
 
 # Define default arguments
 default_args = {
@@ -35,6 +37,19 @@ steps_config = load_yaml_config(steps_yaml_path)
 # GCP Project ID
 gcp_project_id = 'bellassignment-453021'
 
+# Cloud Run Job Configuration
+cloud_run_job_name = 'cloudrun-job-workflows'
+cloud_run_region = 'northamerica-northeast1'  # Updated region
+
+# Trigger Cloud Run Job
+trigger_cloud_run_job = CloudRunExecuteJobOperator(
+    task_id='trigger_cloud_run_job',
+    job_name=cloud_run_job_name,
+    region=cloud_run_region,
+    project_id=gcp_project_id,
+    dag=dag,
+)
+
 # Dictionary to store tasks for each step
 step_tasks = {}
 
@@ -45,7 +60,15 @@ for step, yaml_files in steps_config['steps'].items():
     # Loop through YAML files in the current step
     for yaml_file in yaml_files:
         yaml_file_path = os.path.join(os.path.dirname(__file__), 'maps', yaml_file)
-        config = load_yaml_config(yaml_file_path)
+        
+        try:
+            config = load_yaml_config(yaml_file_path)
+        except FileNotFoundError:
+            LoggingMixin().log.error(f"YAML file not found: {yaml_file_path}")
+            continue
+        except yaml.YAMLError as e:
+            LoggingMixin().log.error(f"Error parsing YAML file {yaml_file_path}: {e}")
+            continue
         
         # Loop through jobs in the current YAML file and create tasks
         for index, job in enumerate(config['jobs']):
@@ -87,3 +110,7 @@ for i in range(len(steps_config['steps']) - 1):
     for current_task in step_tasks[current_step]:
         for next_task in step_tasks[next_step]:
             current_task >> next_task
+
+# Set dependency: Cloud Run Job must succeed before any tasks in Step 1
+for task in step_tasks['step1']:
+    trigger_cloud_run_job >> task
