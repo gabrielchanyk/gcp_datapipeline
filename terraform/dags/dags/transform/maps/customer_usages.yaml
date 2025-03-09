@@ -35,7 +35,7 @@ jobs:
           c.customer_id;
 
   - destination_dataset: curated
-    destination_table: internet_customer_province_count
+    destination_table: internet_customer_prov_count
     write_disposition: WRITE_TRUNCATE
     query: >
       SELECT 
@@ -58,7 +58,7 @@ jobs:
           customer_count DESC;
 
   - destination_dataset: curated
-    destination_table: cellular_customer_province_count
+    destination_table: cellular_customer_prov_count
     write_disposition: WRITE_TRUNCATE
     query: >
       SELECT 
