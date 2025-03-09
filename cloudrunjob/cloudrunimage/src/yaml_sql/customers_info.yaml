@@ -1,0 +1,22 @@
+engine: "mysql"
+url: "mysql+mysqlconnector://avnadmin:<password>@mysql-191e4b62-bellassignment55-04a3.g.aivencloud.com:18533/defaultdb"
+dataset_id: "lnd"
+table:
+  name: "customers"
+  query: |
+    SELECT
+        customer_id,
+        first_name,
+        last_name,
+        date_of_birth,
+        email,
+        phone_number,
+        address_line1,
+        address_line2,
+        city,
+        state_province,
+        postal_code,
+        country,
+        activation_date
+    FROM
+        Customers

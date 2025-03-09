@@ -1,0 +1,80 @@
+[
+  {
+    "name": "customer_id",
+    "type": "INTEGER",
+    "mode": "REQUIRED",
+    "description": "Primary key, auto-incremented."
+  },
+  {
+    "name": "first_name",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Customer's first name."
+  },
+  {
+    "name": "last_name",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Customer's last name."
+  },
+  {
+    "name": "date_of_birth",
+    "type": "DATE",
+    "mode": "REQUIRED",
+    "description": "Customer's date of birth."
+  },
+  {
+    "name": "email",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Customer's email address."
+  },
+  {
+    "name": "phone_number",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Customer's contact number."
+  },
+  {
+    "name": "address_line1",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "First line of the customer's address."
+  },
+  {
+    "name": "address_line2",
+    "type": "STRING",
+    "mode": "NULLABLE",
+    "description": "Second line of the customer's address (optional)."
+  },
+  {
+    "name": "city",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "City of the customer's address."
+  },
+  {
+    "name": "state_province",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "State or province of the customer's address."
+  },
+  {
+    "name": "postal_code",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Postal or ZIP code of the customer's address."
+  },
+  {
+    "name": "country",
+    "type": "STRING",
+    "mode": "REQUIRED",
+    "description": "Country of the customer's address."
+  },
+  {
+    "name": "activation_date",
+    "type": "DATE",
+    "mode": "REQUIRED",
+    "description": "Date when the customer was activated."
+  }
+]
