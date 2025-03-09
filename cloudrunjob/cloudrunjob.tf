@@ -54,8 +54,14 @@ resource "google_project_service" "cloudrun_api" {
 #     depends_on = [google_storage_bucket_object.crj-config]
 # }
 
-resource "google_cloud_run_v2_job" "default" {
-  name     = "cloudrun-job"
+resource "google_project_iam_member" "secret_accessor" {
+  project = var.projectID
+  role    = "roles/secretmanager.secretAccessor"
+  member  = "serviceAccount:836681211124-compute@developer.gserviceaccount.com"
+}
+
+resource "google_cloud_run_v2_job" "cloud-run-job-workflows" {
+  name     = "cloudrun-job-workflows"
   location = "northamerica-northeast1"  # Montreal region
   deletion_protection = false
 
@@ -63,8 +69,22 @@ resource "google_cloud_run_v2_job" "default" {
     template {
       containers {
         image = "northamerica-northeast1-docker.pkg.dev/bellassignment-453021/docker-repo/odbc:latest"
+        volume_mounts {
+          mount_path = "/secrets"
+          name       = "secret-volume"
+        }
+      }
+      volumes {
+        name = "secret-volume"
+        secret {
+          secret = google_secret_manager_secret.secrets.secret_id
+          items {
+            path = "my_sql_pw"
+            version = "latest"
+          }
+        }
       }
     }
   }
-  depends_on = [ google_project_service.cloudrun_api ]
+  depends_on = [ google_project_service.cloudrun_api, google_project_iam_member.secret_accessor ]
 }

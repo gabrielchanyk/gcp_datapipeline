@@ -8,9 +8,17 @@ RUN echo "Cloud Run Dockerfile"
 
 # COPY ${CRJ_CIR}/Pipfile* .
 
-RUN apt-get -y update && apt-get -y upgrade \
-&& apt-get clean
-# use requirements.txt
+WORKDIR /app
+
+COPY src /app/src
+
+RUN apt-get -y update \
+&& apt-get -y upgrade \
+&& apt-get clean \
+&& pip install pymysql
+
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 #gcloud sdk
 # RUN curl -O "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-449.0.0-linux-x86_64.tar.gz"
@@ -27,11 +35,5 @@ RUN addgroup --system --gid 1001 usergroup
 RUN adduser --system --uid 1001 python
 
 USER python
-
-WORKDIR /app
-
-COPY src /app/src
-
-RUN ls
 
 CMD ["python", "/app/src/main.py"]
